@@ -1,15 +1,19 @@
 body {
-  background: #000;
+  background: #091F33;
   color: #fff;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   margin-top: 3em;
 }
 
-#time {
-  font-size: 300px;
+#timer {
+  font-size: 100px;
+  color: #50976C;
+  transition: all 100ms ease;
+}
 
-  color: #7fff00;
+.warning {
+  color: #AB4337;
 }
 
 .button {

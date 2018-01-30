@@ -1,14 +1,27 @@
-const TIMER = document.getElementById('time');
-const SPEECH_BTN = document.getElementById('speech');
-const AD_VOCEM = document.getElementById('ad-vocem');
+var timer = document.getElementById('timer');
+var speech = document.getElementById('speech');
+var adVocem = document.getElementById('ad-vocem');
 
+var watch = new Stopwatch(timer);
 
-let countdown = new Timer(TIMER);
+function start() {
+    speech.textContent = 'Pauza';
+    watch.start(241000);
+}
 
-SPEECH_BTN.addEventListener('click', function(){
-    if (countdown.isOn) {
-        countdown.stop()
-    } else {
-        countdown.start()
-    }
+function stop() {
+    speech.textContent = 'Start';
+    watch.stop();
+}
+
+speech.addEventListener('click', function() {
+    watch.isOn ? stop() : start();
 });
+
+adVocem.addEventListener('click', function() {
+    watch.start(31000);
+});
+
+// timer.addEventListener('textContent', function(){
+//     if
+// })

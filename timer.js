@@ -1,61 +1,60 @@
-function Timer(element) {
-    let time;
-    let interval;
-    let offset;
+function Stopwatch(elem) {
+    var time;
+    var offset;
+    var interval;
 
     function update() {
         if (this.isOn) {
             time += delta();
         }
-        element.textContent = formattedTime;
-    }
 
+        elem.textContent = timeFormatter(time);
+    }
 
     function delta() {
-        let now = Date.now();
-        let timePassed = offset - now;
+        var now = Date.now();
+        var timePassed = offset - now;
+
         offset = now;
 
-        return timePassed
+        return timePassed;
     }
 
-    function formattedTime(timeInSeconds) {
-        let time = new Date(timeInSeconds);
-        let minutes = time.getMinutes() + ':';
-        let seconds = time.getSeconds().toString();
+    function timeFormatter(time) {
+        time = new Date(time);
 
-        if (minutes === '0:') {
-            minutes = ''
+        var minutes = time.getMinutes();
+        var seconds = time.getSeconds().toString();
+
+        if (minutes === '0') {
+            minutes = '';
         }
 
         if (seconds.length < 2) {
-            seconds = `0${seconds}`
+            seconds = `0${seconds}`;
         }
 
-        return `${minutes}${seconds}`
 
+        return `${minutes} : ${seconds}`;
     }
 
-
-    this.isOn = false;
-
-    this.start = function() {
-        if (!this.isOn) {
-            interval = setInterval(update, 100);
-            offset = Date.now();
-            this.isOn = true;
-        }
-
+    this.start = function(timeAmount) {
+        time = timeAmount;
+        interval = setInterval(update.bind(this), 10);
+        offset = Date.now();
+        this.isOn = true;
     };
 
     this.stop = function() {
-        if (this.isOn) {
-            clearInterval(interval);
-            interval = null;
-            this.isOn = false;
-        }
+        clearInterval(interval);
+        interval = null;
+        this.isOn = false;
     };
+
     this.reset = function() {
-        time = timeAmount
+        time = 0;
+        update();
     };
+
+    this.isOn = false;
 }
