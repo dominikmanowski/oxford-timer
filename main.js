@@ -4,10 +4,10 @@ var adVocem = document.getElementById('ad-vocem');
 
 var watch = new Stopwatch(timer);
 
-function start() {
+/*function start() {
     speech.textContent = 'Pauza';
-    watch.start(241000);
-}
+    watch.start();
+}*/
 
 function stop() {
     speech.textContent = 'Start';
@@ -15,9 +15,9 @@ function stop() {
 }
 
 speech.addEventListener('click', function() {
-    watch.isOn ? stop() : start();
+    watch.isOn ? stop() : watch.start(241000);
 });
 
 adVocem.addEventListener('click', function() {
-    watch.start(31000);
+    watch.isOn ? stop() : watch.start(31000);
 });
