@@ -21,7 +21,3 @@ speech.addEventListener('click', function() {
 adVocem.addEventListener('click', function() {
     watch.start(31000);
 });
-
-// timer.addEventListener('textContent', function(){
-//     if
-// })
