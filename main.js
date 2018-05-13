@@ -1,16 +1,12 @@
-var timer = document.getElementById('timer');
-var speech = document.getElementById('speech');
-var adVocem = document.getElementById('ad-vocem');
+const timer = document.getElementById('timer');
+const speech = document.getElementById('speech');
+const adVocem = document.getElementById('ad-vocem');
 
-var watch = new Stopwatch(timer);
 
-/*function start() {
-    speech.textContent = 'Pauza';
-    watch.start();
-}*/
+const watch = new Stopwatch(timer);
 
 function stop() {
-    speech.textContent = 'Start';
+    // speech.textContent = 'Start';
     watch.stop();
 }
 

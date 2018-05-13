@@ -1,19 +1,33 @@
+
+
 function Stopwatch(elem) {
-    var time;
-    var offset;
-    var interval;
+    let time;
+    let offset;
+    let interval;
 
     function update() {
         if (this.isOn) {
             time += delta();
         }
 
+        console.log(time);
+
+        if (time < 100) {
+            this.stop()
+        }
+
+        if (time < 39000) {
+            document.getElementById('timer').classList.add("warning")
+        } else {
+            document.getElementById('timer').classList.remove("warning")
+        }
+
         elem.textContent = timeFormatter(time);
     }
 
     function delta() {
-        var now = Date.now();
-        var timePassed = offset - now;
+        let now = Date.now();
+        let timePassed = offset - now;
 
         offset = now;
 
@@ -23,10 +37,10 @@ function Stopwatch(elem) {
     function timeFormatter(time) {
         time = new Date(time);
 
-        var minutes = time.getMinutes();
-        var seconds = time.getSeconds().toString();
+        let minutes = time.getMinutes() + ":";
+        let seconds = time.getSeconds().toString();
 
-        if (minutes === '0') {
+        if (minutes < '1') {
             minutes = '';
         }
 
@@ -35,12 +49,12 @@ function Stopwatch(elem) {
         }
 
 
-        return `${minutes} : ${seconds}`;
+        return `${minutes}${seconds}`;
     }
 
     this.start = function(timeAmount) {
         time = timeAmount;
-        interval = setInterval(update.bind(this), 10);
+        interval = setInterval(update.bind(this), 100);
         offset = Date.now();
         this.isOn = true;
     };
@@ -51,10 +65,6 @@ function Stopwatch(elem) {
         this.isOn = false;
     };
 
-    this.reset = function() {
-        time = 0;
-        update();
-    };
 
     this.isOn = false;
 }
