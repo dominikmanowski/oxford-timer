@@ -12,11 +12,11 @@ function Stopwatch(elem) {
 
         console.log(time);
 
-        if (time < 100) {
+        if (time < 110) {
             this.stop()
         }
 
-        if (time < 39000) {
+        if (time < 31000) {
             document.getElementById('timer').classList.add("warning")
         } else {
             document.getElementById('timer').classList.remove("warning")
