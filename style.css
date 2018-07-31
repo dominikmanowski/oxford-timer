@@ -24,8 +24,16 @@ span {
     border-radius: 19px;
     color: #091F33;
     font-size: 1.2em;
+    cursor: pointer;
     transition: all 100ms ease; }
 
-.button:hover {
+.button:hover,
+.button:focus,
+.button:active {
+    outline: none;
     background: #fff;
     color: #000; }
+    
+.button::-moz-focus-inner {
+    border: 0;
+}
