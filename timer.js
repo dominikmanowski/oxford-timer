@@ -37,19 +37,10 @@ function Stopwatch(elem) {
     function timeFormatter(time) {
         time = new Date(time);
 
-        let minutes = time.getMinutes() + ":";
-        let seconds = time.getSeconds().toString();
+        let minutes = time.getMinutes();
+        let seconds = time.getSeconds();
 
-        if (minutes < '1') {
-            minutes = '';
-        }
-
-        if (seconds.length < 2) {
-            seconds = `0${seconds}`;
-        }
-
-
-        return `${minutes}${seconds}`;
+        return `${minutes > 0 ? `${minutes}:` : ''}${seconds < 10 ? `0${seconds}` : seconds}`
     }
 
     this.start = function(timeAmount) {
