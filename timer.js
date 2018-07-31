@@ -10,9 +10,7 @@ function Stopwatch(elem) {
             time += delta();
         }
 
-        console.log(time);
-
-        if (time < 110) {
+        if (time < 190) {
             this.stop()
         }
 
@@ -55,7 +53,6 @@ function Stopwatch(elem) {
         interval = null;
         this.isOn = false;
     };
-
 
     this.isOn = false;
 }
