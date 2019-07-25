@@ -1,5 +1,3 @@
-
-
 function Stopwatch(elem) {
     let time;
     let offset;
